@@ -39,7 +39,7 @@ enum custom_keycodes { AE = SAFE_RANGE, UE, OE, E_AIGU, E_GRV, A_GRV, U_GRV, C_E
 const custom_shift_key_t custom_shift_keys[] = {
     {KC_DOT, KC_COLN},  // Shift . is colon
     {KC_COMM, KC_SCLN}, // Shift , is semicolon
-    {KC_BSPC, KC_DEL},  // Shift Backspace is delete
+//    {KC_BSPC, KC_DEL},  // Shift Backspace is delete
 };
 
 // ┌─────────────────────────────────────────────────┐
@@ -47,7 +47,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 // └─────────────────────────────────────────────────┘
 
 // LEFT HAND HOME ROW MODS ├───────────────────────────────────┐
-#define GUI_J LGUI_T(KC_J)
+#define GUI_C LGUI_T(KC_C)
 #define ALT_S LALT_T(KC_S)
 #define CTL_I LCTL_T(KC_I)
 #define SFT_E LSFT_T(KC_E)
@@ -63,16 +63,23 @@ const custom_shift_key_t custom_shift_keys[] = {
 // │ d e f i n e   c o m b o s                       │
 // └─────────────────────────────────────────────────┘
 
-const uint16_t PROGMEM left_ind_mid[]       = {KC_X, KC_Z, COMBO_END};
-const uint16_t PROGMEM right_ind_mid_num[]  = {KC_EQL, KC_COMM, COMBO_END};
+#define COMBO_MUST_HOLD_MODS
+#define COMBO_HOLD_TERM 150
+
+const uint16_t PROGMEM left_ind_mid[] = {KC_X, KC_Z, COMBO_END};
+const uint16_t PROGMEM right_ind_mid_num[] = {KC_EQL, KC_COMM, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_base[] = {KC_G, KC_COMM, COMBO_END};
-const uint16_t PROGMEM left_top_row[]       = {KC_Y, KC_U, KC_A, COMBO_END};
+const uint16_t PROGMEM left_top_row[] = {KC_Y, KC_U, KC_A, COMBO_END};
+const uint16_t PROGMEM both_thumbs_home[] = {LT(_NAV, KC_SPC), KC_LSFT, COMBO_END};
+const uint16_t PROGMEM outer_2_right[] = {KC_BSPC, KC_H, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(left_ind_mid, KC_ESC),
     COMBO(right_ind_mid_num, KC_ENT),
     COMBO(right_ind_mid_base, KC_ENT),
-    COMBO(left_top_row, TG(_NUMBLK))
+    COMBO(left_top_row, TG(_NUMBLK)),
+    COMBO(both_thumbs_home, L_GUI),
+    COMBO(outer_2_right, KC_DEL)
 };
 
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -83,22 +90,26 @@ combo_t key_combos[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*
-     * ┌─────────────────────────────────────────────────┐
-     * │ n o t e d                                       │      ╭╮╭╮╭╮╭╮
-     * └─────────────────────────────────────────────────┘      │╰╯╰╯╰╯│
-     *           ┌─────────┬─────────┬─────────┬─────────┬──────╨──┐┌──╨──────┬─────────┬─────────┬─────────┬─────────┐
-     *   ╌┄┈┈───═╡  _UML   │    Y    │    U    │    A    │    Q    ││    P    │    B    │    M    │    L    │    F    │
-     *           ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
-     *           │    C    │  ALT_S  │  CTL_I  │  SFT_E  │    O    ││    D    │    T    │    N    │    R    │    H    │
-     * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-     * │ REPEAT  │    V    │  GUI_J  │    X    │    Z    │    -    ││    W    │    G    │    ,    │    .    │    K    │  BCKSP  │
-     * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
-     *                               │ MOU_ARP │ NAV_SPC │ MAT_TAB ││  _SYM   │  SHIFT  │  _FMED  │
-     *                               └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
+    * ┌─────────────────────────────────────────────────┐
+    * │ n o t e d                                       │      ╭╮╭╮╭╮╭╮
+    * └─────────────────────────────────────────────────┘      │╰╯╰╯╰╯│
+    *           ┌─────────┬─────────┬─────────┬─────────┬──────╨──┐┌──╨──────┬─────────┬─────────┬─────────┬─────────┐
+    *   ╌┄┈┈───═╡  _UML   │    Y    │    U    │    A    │    Q    ││    P    │    B    │    M    │    L    │    F    │
+    *           ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
+    *           │    C    │  ALT_S  │  CTL_I  │  SFT_E  │    O    ││    D    │    T    │    N    │    R    │    H    │
+    * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
+    * │ REPEAT  │    V    │  GUI_J  │    X    │    Z    │    -    ││    W    │    G    │    ,    │    .    │    K    │  BCKSP  │
+    * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
+    *                               │ MOU_ARP │ NAV_SPC │ MAT_TAB ││  _SYM   │  SHIFT  │   LGUI  |
+    *                               └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
 
     [_NOTED] = LAYOUT(
-        // ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-        MO(_UML), KC_Y, KC_U, KC_A, KC_Q, KC_P, KC_B, KC_M, KC_L, KC_F, KC_C, ALT_S, CTL_I, SFT_E, KC_O, KC_D, KC_T, KC_N, KC_R, KC_H, QK_REP, KC_V, GUI_J, KC_X, KC_Z, KC_MINS, KC_W, KC_G, KC_COMM, KC_DOT, KC_K, KC_BSPC, MOU_ARP, NAV_SPC, MAT_TAB, MO(_SYM), KC_LSFT, MO(_FMED)),
+        //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
+                    MO(_UML),  KC_Y,     KC_U,     KC_A,     KC_Q,      KC_P,     KC_B,     KC_M,     KC_L,     KC_F,
+                    GUI_C,     ALT_S,    CTL_I,    SFT_E,    KC_O,      KC_D,     KC_T,     KC_N,     KC_R,     KC_H,
+        QK_REP,     KC_V,      KC_J,     KC_X,     KC_Z,     KC_MINS,   KC_W,     KC_G,     KC_COMM,  KC_DOT,   KC_K,  KC_BSPC,
+                                         MOU_ARP,  NAV_SPC,  MAT_TAB,   MO(_SYM), KC_LSFT,  KC_LGUI
+    ),
 
     /*
      * ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
