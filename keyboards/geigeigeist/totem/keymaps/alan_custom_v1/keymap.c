@@ -101,7 +101,7 @@ combo_t key_combos[] = {
     COMBO(right_ind_mid_num, KC_ENT),
     COMBO(right_ind_mid_base, KC_ENT),
     COMBO(left_top_row, TG(_NUMBLK)),
-    COMBO(both_thumbs_home, L_GUI),
+    COMBO(both_thumbs_home, KC_LGUI),
     COMBO(outer_2_right, KC_DEL)
 };
 
@@ -121,17 +121,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *           ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
     *           │    C    │  ALT_S  │  CTL_I  │  SFT_E  │    O    ││    D    │    T    │    N    │    R    │    H    │
     * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-    * │ REPEAT  │    V    │  GUI_J  │    X    │    Z    │    -    ││    W    │    G    │    ,    │    .    │    K    │  BCKSP  │
+    * │ REPEAT  │    V    │    J    │    X    │    Z    │    -    ││    W    │    G    │    ,    │    .    │    K    │  BCKSP  │
     * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
-    *                               │ MOU_ARP │ NAV_SPC │ MAT_TAB ││  _SYM   │  SHIFT  │   LGUI  |
+    *                               │ MOU_ARP │ NAV_SPC │ MAT_TAB ││  _SYM   │  SHIFT  │   LGUI  │
     *                               └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
 
     [_NOTED] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
                     MO(_UML),  KC_Y,     KC_U,     KC_A,     KC_Q,      KC_P,     KC_B,     KC_M,     KC_L,     KC_F,
-                    GUI_C,     ALT_S,    CTL_I,    SFT_E,    KC_O,      KC_D,     KC_T,     KC_N,     KC_R,     KC_H,
+                    KC_C,      ALT_S,    CTL_I,    SFT_E,    KC_O,      KC_D,     KC_T,     KC_N,     KC_R,     KC_H,
         QK_REP,     KC_V,      KC_J,     KC_X,     KC_Z,     KC_MINS,   KC_W,     KC_G,     KC_COMM,  KC_DOT,   KC_K,  KC_BSPC,
-                                         MOU_ARP,  NAV_SPC,  MAT_TAB,   MO(_SYM), KC_LSFT,  KC_LGUI
+                                         MOU_ARP,  NAV_SPC,  MAT_TAB,   MO(_SYM), KC_LSFT,  XXXXXXX
     ),
 
     /*
@@ -145,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *           ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
     *           │    1    │    2    │    3    │    4    │    5    ││    6    │    7    │    8    │    9    │    0    │
     * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-    * │         │    '    │         │         │         │    [    ││    ]    │    =    │    ,    │    .    │    :    │  BCKSP  │
+    * │         │    '    │         │         │         │    -    ││    +    │    =    │    ,    │    .    │    :    │  BCKSP  │
     * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
     *                               │         │         │         ││         │         │         │
     *                               └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
@@ -153,8 +153,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MATH] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
                      KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,    KC_F11,   KC_F12,   KC_F9,    KC_F10,
-                     KC_1,  LALT_T(KC_2),KC_3,     KC_4,     KC_5,      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
-          _______,   KC_QUOT,  _______,  _______,  _______,  KC_LBRC,   KC_RBRC,  KC_EQL,   KC_COMM,  KC_DOT,   KC_COLN,   KC_BSPC,
+                     KC_1,     KC_2,     KC_3,     KC_4,     KC_5,      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
+          _______,   KC_QUOT,  _______,  _______,  _______,  KC_MINS,   KC_PLUS,  KC_EQL,   KC_COMM,  KC_DOT,   KC_COLN,   KC_BSPC,
                                          _______,  _______,  _______,   _______,  _______,  _______
     ),
 
@@ -214,9 +214,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * │ m o u s e                                       │      ╭╮╭╮╭╮╭╮
     * └─────────────────────────────────────────────────┘      │╰╯╰╯╰╯│
     *           ┌─────────┬─────────┬─────────┬─────────┬──────╨──┐┌──╨──────┬─────────┬─────────┬─────────┬─────────┐
-    *   ╌┄┈┈───═╡         │         │         │         │         ││  REDO   │  PASTE  │  COPY   │   CUT   │  UNDO   │
+    *   ╌┄┈┈───═╡         │         │         │         │         ││         │  PASTE  │  COPY   │   CUT   │  UNDO   │
     *           ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
-    *           │   GUI   │scrnshot │   CTL   │  SHIFT  │         ││         │   M←    │   M↓    │   M↑    │   M→    │
+    *move app to│ wrkspc1 │ wrkspc2 │ wrkspc3 │ wrkspc4 │ wrkspc5 ││ wrkspc6 │   M←    │   M↓    │   M↑    │   M→    │
     * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
     * │         │         │         │         │         │         ││         │  WHL ←  │  WHL ↓  │  WHL ↑  │  WHL →  │         │
     * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
@@ -225,9 +225,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MOUSE] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-                    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_AGIN,  KC_PSTE,  KC_COPY,  KC_CUT,   KC_UNDO,
-                    LCS(KC_C),LSG(KC_S),XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  MS_LEFT,  MS_DOWN,  MS_UP,    MS_RGHT,
-          _______,  LCS(KC_V),KC_LGUI,  LCTL(KC_X),XXXXXXX, XXXXXXX,   XXXXXXX,  MS_WHLL,  MS_WHLD,  MS_WHLU,  MS_WHLR,  _______,
+                    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  KC_PSTE,  KC_COPY,  KC_CUT,   KC_UNDO,
+                    LSG(KC_1),LSG(KC_2),LSG(KC_3),LSG(KC_4),LSG(KC_5), LSG(KC_6),MS_LEFT,  MS_DOWN,  MS_UP,    MS_RGHT,
+          _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  MS_WHLL,  MS_WHLD,  MS_WHLU,  MS_WHLR,  _______,
                                         _______,  XXXXXXX,  XXXXXXX,   MS_BTN2,  MS_BTN1,  MS_BTN3
     ),
 
@@ -266,7 +266,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *           ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
     *           │    0    │    4    │    5    │    6    │    /    ││         │  SHIFT  │   CTL   │   ALT   │   GUI   │
     * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-    * │    ▼    │         │    1    │    2    │    3    │         ││         │    G    │    ,    │         │         │         │
+    * │    ▼    │         │    1    │    2    │    3    │    -    ││    +    │    G    │    ,    │         │         │         │
     * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
     *                               │    0    │   SPC   │   TAB   ││         │         │         │
     *                               └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
@@ -274,9 +274,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NUMBLK] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
                     XXXXXXX,  KC_7,     KC_8,     KC_9,     XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-                    KC_0,     KC_4,     KC_5,     KC_6,     KC_PSLS,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-       TG(_NUMBLK), XXXXXXX,  KC_1,     KC_2,     KC_3,     XXXXXXX,   XXXXXXX,  KC_G,     KC_COMM,  XXXXXXX,  XXXXXXX,  _______,
-                                        KC_0,     KC_SPC,   KC_TAB,    TG(_NUMBLK),  KC_LSFT,  TG(_NUMBLK)
+                    KC_0,     KC_4,     KC_5,     KC_6,     KC_PSLS,   TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK),XXXXXXX,
+       TG(_NUMBLK), XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_MINS,   KC_PLUS,  KC_G,     KC_COMM,  XXXXXXX,  XXXXXXX,  _______,
+                                        KC_0,     KC_SPC,   KC_TAB,    TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK)
     ),
 
     /*
