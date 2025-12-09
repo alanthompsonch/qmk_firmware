@@ -50,10 +50,10 @@ enum custom_keycodes {
     A_GRV,
     U_GRV,
     C_EDIL,
-    FV_UP,
-    FV_DOWN,
-    TN_LEFT,
-    TN_RIGHT
+    FAST_U,
+    FAST_D,
+    FAST_L,
+    FAST_R
 };
 
 // ┌─────────────────────────────────────────────────┐
@@ -132,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
                     MO(_UML),  KC_Y,     KC_U,     KC_A,     KC_Q,      KC_P,     KC_B,     KC_M,     KC_L,     KC_F,
                     KC_C,      ALT_S,    CTL_I,    SFT_E,    KC_O,      KC_D,     KC_T,     KC_N,     KC_R,     KC_H,
-        GAC_MOD,    KC_V,      KC_J,     KC_X,     KC_Z,     KC_MINS,   KC_W,     KC_G,     KC_COMM,  KC_DOT,   KC_K,  KC_BSPC,
+        GAC_MOD,    KC_V,      KC_J,     KC_X,     KC_Z,     KC_SLSH,   KC_W,     KC_G,     KC_COMM,  KC_DOT,   KC_K,  KC_BSPC,
                                          MOU_REP,  NAV_SPC,  MAT_TAB,   MO(_SYM), KC_LSFT,  KC_LGUI
     ),
 
@@ -156,7 +156,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
                      KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,    KC_F11,   KC_F12,   KC_F9,    KC_F10,
                      KC_1,     KC_2,     KC_3,     KC_4,     KC_5,      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
-          _______,   KC_QUOT,  _______,  _______,  _______,  KC_MINS,   KC_PLUS,  KC_EQL,   KC_COMM,  KC_DOT,   KC_COLN,   KC_BSPC,
+          _______,   KC_MINS,  _______,  _______,  _______,  KC_SLSH,   KC_PLUS,  KC_EQL,   KC_COMM,  KC_DOT,   KC_COLN,   KC_BSPC,
                                          _______,  _______,  _______,   _______,  _______,  _______
     ),
 
@@ -178,10 +178,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
 
     [_SYM] = LAYOUT(
-        //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-                     KC_DQUO,  KC_AT,    KC_HASH,  KC_PERC,  KC_CIRC,   KC_TILD,  KC_PIPE,  KC_AMPR,  KC_EQL,   XXXXXXX,
-                     KC_QUOT,  KC_LCBR,  KC_LBRC,  KC_LPRN,  KC_SLSH,   KC_BSLS,  KC_RABK,  KC_QUES,  KC_EXLM,  KC_DLR,
-           _______,  KC_GRV,   KC_RCBR,  KC_RBRC,  KC_RPRN,  KC_MINS,   KC_PLUS,  KC_LABK,  KC_COMM,  KC_DOT,   KC_ASTR,   KC_BSPC,
+        //╷         ╷           ╷           ╷           ╷           ╷           ╷╷           ╷           ╷           ╷           ╷           ╷           ╷
+                    S(KC_2),    ALGR(KC_2), ALGR(KC_3), S(KC_5),    KC_EQL,      ALGR(KC_EQL),ALGR(KC_7),S(KC_6),    S(KC_0),    XXXXXXX,
+                    KC_MINS, ALGR(KC_QUOT), ALGR(KC_LBRC),S(KC_8),  S(KC_7),  ALGR(KC_NUBS), S(KC_NUBS), S(KC_MINS), S(KC_RBRC), KC_NUHS,
+           _______, S(KC_EQL),ALGR(KC_NUHS),ALGR(KC_RBRC),S(KC_9),  KC_SLSH,     S(KC_1),    KC_NUBS,    KC_COMM,    KC_DOT,     S(KC_3),   KC_BSPC,
                                          _______,  _______,  _______,   _______,  _______,  _______
     ),
 
@@ -203,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-                    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_AGIN,  TN_LEFT,  FV_DOWN,  FV_UP,    TN_RIGHT,
+                    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_AGIN,  FAST_L,   FAST_D,   FAST_U,   FAST_R,
                     XXXXXXX,  KC_LALT,  KC_LCTL,  KC_LSFT,  XXXXXXX,   KC_CAPS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,
           _______,  XXXXXXX,  KC_LGUI,  SELWORD,  XXXXXXX,  XXXXXXX,   XXXXXXX,  KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,  KC_BSPC,
                                         XXXXXXX,  _______,  XXXXXXX,   _______,   _______,  _______
@@ -277,7 +277,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
                     XXXXXXX,  KC_7,     KC_8,     KC_9,     XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
                     KC_0,     KC_4,     KC_5,     KC_6,     KC_PSLS,   TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK),XXXXXXX,
-       TG(_NUMBLK), XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_MINS,   KC_PLUS,  KC_G,     KC_COMM,  XXXXXXX,  XXXXXXX,  _______,
+       TG(_NUMBLK), XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_SLSH,   KC_PLUS,  KC_G,     KC_COMM,  XXXXXXX,  XXXXXXX,  _______,
                                         KC_0,     KC_SPC,   KC_TAB,    TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK)
     ),
 
@@ -325,88 +325,96 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     bool shifted = get_mods() & MOD_MASK_SHIFT;
 
     switch (keycode) {
-        case TN_LEFT:
+        case FAST_L:
             if (record->event.pressed) {
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-                tap_code(KC_LEFT);
-            }
-            return false;
-        case FV_DOWN:
-            if (record->event.pressed) {
-                tap_code(KC_DOWN);
-                tap_code(KC_DOWN);
-                tap_code(KC_DOWN);
-                tap_code(KC_DOWN);
-                tap_code(KC_DOWN);
+                for (int i = 0; i < 10; i++){
+                    tap_code(KC_LEFT);
+                }
             }
             return false;
 
-        case FV_UP:
+        case FAST_D:
             if (record->event.pressed) {
-                tap_code(KC_UP);
-                tap_code(KC_UP);
-                tap_code(KC_UP);
-                tap_code(KC_UP);
-                tap_code(KC_UP);
+                for (int i = 0; i < 7; i++){
+                    tap_code(KC_DOWN);
+                }
             }
             return false;
 
-        case TN_RIGHT:
+        case FAST_U:
             if (record->event.pressed) {
-                tap_code(KC_RIGHT);
-                tap_code(KC_RIGHT);
-                tap_code(KC_RIGHT);
-                tap_code(KC_RIGHT);
-                tap_code(KC_RIGHT);
-                tap_code(KC_RIGHT);
-                tap_code(KC_RIGHT);
-                tap_code(KC_RIGHT);
-                tap_code(KC_RIGHT);
-                tap_code(KC_RIGHT);
+                for (int i = 0; i < 7; i++){
+                    tap_code(KC_UP);
+                }
+            }
+            return false;
+
+        case FAST_R:
+            if (record->event.pressed) {
+                for (int i = 0; i < 10; i++){
+                    tap_code(KC_RIGHT);
+                }
             }
             return false;
 
         case AE:
-            if (shifted) {
-                // Clear shift temporarily to type the correct character
-                unregister_mods(MOD_MASK_SHIFT);
-                send_unicode_string("Ä");
-                register_mods(shifted);
-            } else {
-                send_unicode_string("ä");
-            }
-            return false;
+            if (record->event.pressed) {
+                // save current mods
+                uint8_t mods = get_mods();
+
+                if (mods & MOD_MASK_SHIFT) {
+                    unregister_mods(MOD_MASK_SHIFT);
+                }
+
+                tap_code(KC_CAPS);
+                wait_ms(10);
+                tap_code(KC_QUOT);
+                wait_ms(10);
+                tap_code(KC_CAPS);
+                wait_ms(10);
+
+                //restore mods
+                set_mods(mods);
 
         case UE:
-            if (shifted) {
-                unregister_mods(MOD_MASK_SHIFT);
-                send_unicode_string("Ü");
-                register_mods(shifted);
-            } else {
-                send_unicode_string("ü");
-            }
-            return false;
+             if (record->event.pressed) {
+                // save current mods
+                uint8_t mods = get_mods();
 
-        case OE:
-            if (shifted) {
-                unregister_mods(MOD_MASK_SHIFT);
-                send_unicode_string("Ö");
-                register_mods(shifted);
-            } else {
-                send_unicode_string("ö");
-            }
-            return false;
+                if (mods & MOD_MASK_SHIFT) {
+                    unregister_mods(MOD_MASK_SHIFT);
+                }
 
-        case E_AIGU:
+                tap_code(KC_CAPS);
+                wait_ms(10);
+                tap_code(KC_LBRC);
+                wait_ms(10);
+                tap_code(KC_CAPS);
+                wait_ms(10);
+
+                //restore mods
+                set_mods(mods);
+
+       case OE:
+              if (record->event.pressed) {
+                // save current mods
+                uint8_t mods = get_mods();
+
+                if (mods & MOD_MASK_SHIFT) {
+                    unregister_mods(MOD_MASK_SHIFT);
+                }
+
+                tap_code(KC_CAPS);
+                wait_ms(10);
+                tap_code(KC_QUOT);
+                wait_ms(10);
+                tap_code(KC_CAPS);
+                wait_ms(10);
+
+                //restore mods
+                set_mods(mods);
+
+      case E_AIGU:
             if (shifted) {
                 unregister_mods(MOD_MASK_SHIFT);
                 send_unicode_string("É");
@@ -447,13 +455,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
 
         case C_EDIL:
-            if (shifted) {
-                unregister_mods(MOD_MASK_SHIFT);
-                send_unicode_string("Ç");
-                register_mods(shifted);
-            } else {
-                send_unicode_string("ç");
-            }
             return false;
     }
 
