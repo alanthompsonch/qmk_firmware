@@ -61,8 +61,16 @@ enum custom_keycodes {
 // └─────────────────────────────────────────────────┘
 
 const custom_shift_key_t custom_shift_keys[] = {
-    {KC_DOT , KC_COLN}, // Shift . is colon
-    {KC_COMM, KC_SCLN}, // Shift , is semicolon
+    {KC_1, KC_1},
+    {KC_2, KC_2},
+    {KC_3, KC_3},
+    {KC_4, KC_4},
+    {KC_5, KC_5},
+    {KC_6, KC_6},
+    {KC_7, KC_7},
+    {KC_8, KC_8},
+    {KC_9, KC_9},
+    {KC_0, KC_0},
 };
 
 
@@ -130,9 +138,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NOTED] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-                    MO(_UML),  KC_Y,     KC_U,     KC_A,     KC_Q,      KC_P,     KC_B,     KC_M,     KC_L,     KC_F,
+                    MO(_UML),  KC_Z,     KC_U,     KC_A,     KC_Q,      KC_P,     KC_B,     KC_M,     KC_L,     KC_F,
                     KC_C,      ALT_S,    CTL_I,    SFT_E,    KC_O,      KC_D,     KC_T,     KC_N,     KC_R,     KC_H,
-        GAC_MOD,    KC_V,      KC_J,     KC_X,     KC_Z,     KC_SLSH,   KC_W,     KC_G,     KC_COMM,  KC_DOT,   KC_K,  KC_BSPC,
+        GAC_MOD,    KC_V,      KC_J,     KC_X,     KC_Y,     KC_SLSH,   KC_W,     KC_G,     KC_COMM,  KC_DOT,   KC_K,  KC_BSPC,
                                          MOU_REP,  NAV_SPC,  MAT_TAB,   MO(_SYM), KC_LSFT,  KC_LGUI
     ),
 
@@ -310,11 +318,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // │ M A C R O S                                                                                                            │
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 // ▝▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▘
-
+/*
 void matrix_init_user(void) {
     set_unicode_input_mode(UC_LINX);
 }
-
+*/
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Only process on key press, not release
     if (!record->event.pressed) {
@@ -325,6 +333,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     bool shifted = get_mods() & MOD_MASK_SHIFT;
 
     switch (keycode) {
+
         case FAST_L:
             if (record->event.pressed) {
                 for (int i = 0; i < 10; i++){
@@ -364,17 +373,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
                 if (mods & MOD_MASK_SHIFT) {
                     unregister_mods(MOD_MASK_SHIFT);
+                    tap_code(KC_CAPS);
+                    wait_ms(1);
+                    tap_code(KC_QUOT);
+                    wait_ms(1);
+                    tap_code(KC_CAPS);
+                    //wait_ms(10);
+
+                    //restore mods
+                    set_mods(mods);
+                } else {
+                    tap_code(KC_QUOT);
                 }
-
-                tap_code(KC_CAPS);
-                wait_ms(10);
-                tap_code(KC_QUOT);
-                wait_ms(10);
-                tap_code(KC_CAPS);
-                wait_ms(10);
-
-                //restore mods
-                set_mods(mods);
+            }
+            return false;
 
         case UE:
              if (record->event.pressed) {
@@ -383,75 +395,96 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
                 if (mods & MOD_MASK_SHIFT) {
                     unregister_mods(MOD_MASK_SHIFT);
+                    tap_code(KC_CAPS);
+                    wait_ms(1);
+                    tap_code(KC_LBRC);
+                    wait_ms(1);
+                    tap_code(KC_CAPS);
+                    //wait_ms(10);
+
+                    //restore mods
+                    set_mods(mods);
+                } else {
+                    tap_code(KC_LBRC);
                 }
-
-                tap_code(KC_CAPS);
-                wait_ms(10);
-                tap_code(KC_LBRC);
-                wait_ms(10);
-                tap_code(KC_CAPS);
-                wait_ms(10);
-
-                //restore mods
-                set_mods(mods);
+             }
+             return false;
 
        case OE:
               if (record->event.pressed) {
-                // save current mods
-                uint8_t mods = get_mods();
+                    // save current mods
+                    uint8_t mods = get_mods();
 
-                if (mods & MOD_MASK_SHIFT) {
-                    unregister_mods(MOD_MASK_SHIFT);
-                }
+                    if (mods & MOD_MASK_SHIFT) {
+                        unregister_mods(MOD_MASK_SHIFT);
+                        tap_code(KC_CAPS);
+                        wait_ms(1);
+                        tap_code(KC_SCLN);
+                        wait_ms(1);
+                        tap_code(KC_CAPS);
+                        //wait_ms(10);
 
-                tap_code(KC_CAPS);
-                wait_ms(10);
-                tap_code(KC_QUOT);
-                wait_ms(10);
-                tap_code(KC_CAPS);
-                wait_ms(10);
+                        //restore mods
+                        set_mods(mods);
+                    } else {
+                        tap_code(KC_SCLN);
+                    }
+              }
+              return false;
 
-                //restore mods
-                set_mods(mods);
 
       case E_AIGU:
-            if (shifted) {
-                unregister_mods(MOD_MASK_SHIFT);
-                send_unicode_string("É");
-                register_mods(shifted);
-            } else {
-                send_unicode_string("é");
-            }
-            return false;
+          if (record->event.pressed) {
+              if (shifted) {
+                  tap_code(KC_CAPS);
+                  wait_ms(1);
+                  tap_code(KC_SCLN);
+                  wait_ms(1);
+                  tap_code(KC_CAPS);
+                  //wait_ms(10);
+              } else {
+                  set_mods(MOD_MASK_SHIFT);
+                  tap_code(KC_SCLN);
+                  clear_mods();
+              }
+          }
+          return false;
 
         case E_GRV:
-            if (shifted) {
-                unregister_mods(MOD_MASK_SHIFT);
-                send_unicode_string("È");
-                register_mods(shifted);
-            } else {
-                send_unicode_string("è");
+            if (record->event.pressed) {
+                if (shifted) {
+                    tap_code(KC_CAPS);
+                    wait_ms(1);
+                    tap_code(KC_LBRC);
+                    wait_ms(1);
+                    tap_code(KC_CAPS);
+                    //wait_ms(10);
+                } else {
+                    set_mods(MOD_MASK_SHIFT);
+                    tap_code(KC_LBRC);
+                    clear_mods();
+                }
             }
             return false;
 
         case A_GRV:
-            if (shifted) {
-                unregister_mods(MOD_MASK_SHIFT);
-                send_unicode_string("À");
-                register_mods(shifted);
-            } else {
-                send_unicode_string("à");
+            if (record->event.pressed) {
+                if (shifted) {
+                    tap_code(KC_CAPS);
+                    wait_ms(1);
+                    tap_code(KC_QUOT);
+                    wait_ms(1);
+                    tap_code(KC_CAPS);
+                    //wait_ms(10);
+                } else {
+                    set_mods(MOD_MASK_SHIFT);
+                    tap_code(KC_QUOT);
+                    clear_mods();
+                }
             }
             return false;
 
         case U_GRV:
-            if (shifted) {
-                unregister_mods(MOD_MASK_SHIFT);
-                send_unicode_string("Ù");
-                register_mods(shifted);
-            } else {
-                send_unicode_string("ù");
-            }
             return false;
 
         case C_EDIL:
