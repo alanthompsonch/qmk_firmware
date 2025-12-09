@@ -40,10 +40,10 @@ enum custom_keycodes {
     A_GRV,
     U_GRV,
     C_EDIL,
-    fv_UP,
-    fv_DOWN,
-    fv_LEFT,
-    fv_RIGHT
+    FV_UP,
+    FV_DOWN,
+    TN_LEFT,
+    TN_RIGHT
 };
 
 // ┌─────────────────────────────────────────────────┐
@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-                    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_AGIN,  fv_LEFT,  fv_DOWN,  fv_UP,    fv_RIGHT,
+                    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_AGIN,  TN_LEFT,  FV_DOWN,  FV_UP,    TN_RIGHT,
                     XXXXXXX,  KC_LALT,  KC_LCTL,  KC_LSFT,  XXXXXXX,   KC_CAPS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,
           _______,  XXXXXXX,  KC_LGUI,  SELWORD,  XXXXXXX,  XXXXXXX,   XXXXXXX,  KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,  KC_BSPC,
                                         XXXXXXX,  _______,  XXXXXXX,   _______,   _______,  _______
@@ -298,8 +298,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     bool shifted = get_mods() & MOD_MASK_SHIFT;
 
     switch (keycode) {
-        case fv_LEFT:
+        case TN_LEFT:
             if (record->event.pressed) {
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
                 tap_code(KC_LEFT);
                 tap_code(KC_LEFT);
                 tap_code(KC_LEFT);
@@ -307,28 +313,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_LEFT);
             }
             return false;
-        case fv_DOWN:
+        case FV_DOWN:
             if (record->event.pressed) {
                 tap_code(KC_DOWN);
                 tap_code(KC_DOWN);
                 tap_code(KC_DOWN);
                 tap_code(KC_DOWN);
                 tap_code(KC_DOWN);
-            }
-            return false;
-
-        case fv_UP:
-            if (record->event.pressed) {
-                tap_code(KC_UP);
-                tap_code(KC_UP);
-                tap_code(KC_UP);
-                tap_code(KC_UP);
-                tap_code(KC_UP);
             }
             return false;
 
-        case fv_RIGHT:
+        case FV_UP:
             if (record->event.pressed) {
+                tap_code(KC_UP);
+                tap_code(KC_UP);
+                tap_code(KC_UP);
+                tap_code(KC_UP);
+                tap_code(KC_UP);
+            }
+            return false;
+
+        case TN_RIGHT:
+            if (record->event.pressed) {
+                tap_code(KC_RIGHT);
+                tap_code(KC_RIGHT);
+                tap_code(KC_RIGHT);
+                tap_code(KC_RIGHT);
+                tap_code(KC_RIGHT);
                 tap_code(KC_RIGHT);
                 tap_code(KC_RIGHT);
                 tap_code(KC_RIGHT);
