@@ -1,4 +1,5 @@
 /*
+*
 *                                           ▀▀▀▀▀     ▀▀▀▀▀          ▀▀█▀▀
 *                                           ▄▀▀▀▄  ▄  ▄▀▀▀▄  ▄  ▄▀▀▀▄  █  ▄▀▀▀▄
 *                                           █   █  █  █   █  █  █   █  █  █   █
@@ -8,7 +9,7 @@
 *                                                ▀▀▀▀▀    █  █  █      ▀   ┌─┐┌─╴╷┌──┬─
 *                                                         ▀  ▀  ▀          │ ┐├─╴│└─┐│
 *                                                                          └─┘└─╴╵╶─┘╵
-▄ ▄*▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 */
 
 #include QMK_KEYBOARD_H
@@ -48,7 +49,11 @@ enum custom_keycodes {
     E_GRV,
     A_GRV,
     U_GRV,
-    C_EDIL
+    C_EDIL,
+    fv_UP,
+    fv_DOWN,
+    fv_LEFT,
+    fv_RIGHT
 };
 
 // ┌─────────────────────────────────────────────────┐
@@ -58,9 +63,7 @@ enum custom_keycodes {
 const custom_shift_key_t custom_shift_keys[] = {
     {KC_DOT , KC_COLN}, // Shift . is colon
     {KC_COMM, KC_SCLN}, // Shift , is semicolon
-//    {KC_BSPC, KC_DEL},  // Shift Backspace is delete
 };
-
 
 
 // ┌─────────────────────────────────────────────────┐
@@ -68,7 +71,6 @@ const custom_shift_key_t custom_shift_keys[] = {
 // └─────────────────────────────────────────────────┘
 
 // LEFT HAND HOME ROW MODS ├───────────────────────────────────┐
-#define GUI_C LGUI_T(KC_C)
 #define ALT_S LALT_T(KC_S)
 #define CTL_I LCTL_T(KC_I)
 #define SFT_E LSFT_T(KC_E)
@@ -77,9 +79,10 @@ const custom_shift_key_t custom_shift_keys[] = {
 
 
 // LAYER TAPS ├─────────────────────────────────────────────────┐
-#define MOU_ARP LT(_MOUSE, QK_AREP)
+#define MOU_REP LT(_MOUSE, QK_REP)
 #define NAV_SPC LT(_NAV, KC_SPC)
 #define MAT_TAB LT(_MATH, KC_TAB)
+#define GAC_MOD MT(MOD_LCTL | MOD_LGUI | MOD_LALT, KC_NO)
 
 
 // ┌─────────────────────────────────────────────────┐
@@ -87,14 +90,13 @@ const custom_shift_key_t custom_shift_keys[] = {
 // └─────────────────────────────────────────────────┘
 
 #define COMBO_MUST_HOLD_MODS
-#define COMBO_HOLD_TERM 150
 
 const uint16_t PROGMEM left_ind_mid[] = {KC_X, KC_Z, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_num[] = {KC_EQL, KC_COMM, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_base[] = {KC_G, KC_COMM, COMBO_END};
 const uint16_t PROGMEM left_top_row[] = {KC_Y, KC_U, KC_A, COMBO_END};
 const uint16_t PROGMEM both_thumbs_home[] = {LT(_NAV, KC_SPC), KC_LSFT, COMBO_END};
-const uint16_t PROGMEM outer_2_right[] = {KC_BSPC, KC_H, COMBO_END};
+const uint16_t PROGMEM outer_2_right[] = {KC_R, KC_H, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(left_ind_mid, KC_ESC),
@@ -121,17 +123,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *           ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
     *           │    C    │  ALT_S  │  CTL_I  │  SFT_E  │    O    ││    D    │    T    │    N    │    R    │    H    │
     * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-    * │ REPEAT  │    V    │    J    │    X    │    Z    │    -    ││    W    │    G    │    ,    │    .    │    K    │  BCKSP  │
+    * │ GAC_MOD │    V    │    J    │    X    │    Z    │    -    ││    W    │    G    │    ,    │    .    │    K    │  BCKSP  │
     * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
-    *                               │ MOU_ARP │ NAV_SPC │ MAT_TAB ││  _SYM   │  SHIFT  │   LGUI  │
+    *                               │ MOU_REP │ NAV_SPC │ MAT_TAB ││  _SYM   │  SHIFT  │   LGUI  │
     *                               └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
 
     [_NOTED] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
                     MO(_UML),  KC_Y,     KC_U,     KC_A,     KC_Q,      KC_P,     KC_B,     KC_M,     KC_L,     KC_F,
                     KC_C,      ALT_S,    CTL_I,    SFT_E,    KC_O,      KC_D,     KC_T,     KC_N,     KC_R,     KC_H,
-        QK_REP,     KC_V,      KC_J,     KC_X,     KC_Z,     KC_MINS,   KC_W,     KC_G,     KC_COMM,  KC_DOT,   KC_K,  KC_BSPC,
-                                         MOU_ARP,  NAV_SPC,  MAT_TAB,   MO(_SYM), KC_LSFT,  XXXXXXX
+        GAC_MOD,    KC_V,      KC_J,     KC_X,     KC_Z,     KC_MINS,   KC_W,     KC_G,     KC_COMM,  KC_DOT,   KC_K,  KC_BSPC,
+                                         MOU_REP,  NAV_SPC,  MAT_TAB,   MO(_SYM), KC_LSFT,  KC_LGUI
     ),
 
     /*
@@ -190,9 +192,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * │ n a v                                           │      ╭╮╭╮╭╮╭╮
     * └─────────────────────────────────────────────────┘      │╰╯╰╯╰╯│
     *           ┌─────────┬─────────┬─────────┬─────────┬──────╨──┐┌──╨──────┬─────────┬─────────┬─────────┬─────────┐
-    *   ╌┄┈┈───═╡         │         │         │         │         ││  REDO   │  PASTE  │  COPY   │   CUT   │  UNDO   │
+    *   ╌┄┈┈───═╡         │         │         │         │         ││  REDO   │  ←←←←←  │  ↓↓↓↓↓  │  ↑↑↑↑↑  │  →→→→→  │
     *           ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
-    *           │   GUI   │   ALT   │   CTL   │  SHIFT  │         ││  CAPS   │   ←     │    ↓    │    ↑    │    →    │
+    *           │   GUI   │   ALT   │   CTL   │  SHIFT  │         ││  CAPS   │    ←    │    ↓    │    ↑    │    →    │
     * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
     * │         │         │         │         │         │         ││         │  HOME   │  PG DN  │  PG UP  │   END   │ KC_BSPC │
     * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
@@ -201,9 +203,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-                    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_AGIN,  KC_PSTE,  KC_COPY,  KC_CUT,   KC_UNDO,
+                    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_AGIN,  fv_LEFT,  fv_DOWN,  fv_UP,    fv_RIGHT,
                     XXXXXXX,  KC_LALT,  KC_LCTL,  KC_LSFT,  XXXXXXX,   KC_CAPS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,
-          _______,  XXXXXXX,  KC_LGUI,  SELWORD,  XXXXXXX,  XXXXXXX,   XXXXXXX,  KC_HOME,  KC_PGDN,  KC_PGUP,   KC_END,  KC_BSPC,
+          _______,  XXXXXXX,  KC_LGUI,  SELWORD,  XXXXXXX,  XXXXXXX,   XXXXXXX,  KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,  KC_BSPC,
                                         XXXXXXX,  _______,  XXXXXXX,   _______,   _______,  _______
     ),
 
@@ -227,7 +229,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
                     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  KC_PSTE,  KC_COPY,  KC_CUT,   KC_UNDO,
                     LSG(KC_1),LSG(KC_2),LSG(KC_3),LSG(KC_4),LSG(KC_5), LSG(KC_6),MS_LEFT,  MS_DOWN,  MS_UP,    MS_RGHT,
-          _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,  MS_WHLL,  MS_WHLD,  MS_WHLU,  MS_WHLR,  _______,
+          _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   LSG(KC_7),MS_WHLL,  MS_WHLD,  MS_WHLU,  MS_WHLR,  _______,
                                         _______,  XXXXXXX,  XXXXXXX,   MS_BTN2,  MS_BTN1,  MS_BTN3
     ),
 
@@ -308,6 +310,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // │ M A C R O S                                                                                                            │
 // └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 // ▝▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▘
+
 void matrix_init_user(void) {
     set_unicode_input_mode(UC_LINX);
 }
@@ -322,6 +325,45 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     bool shifted = get_mods() & MOD_MASK_SHIFT;
 
     switch (keycode) {
+        case fv_LEFT:
+            if (record->event.pressed) {
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+                tap_code(KC_LEFT);
+            }
+            return false;
+        case fv_DOWN:
+            if (record->event.pressed) {
+                tap_code(KC_DOWN);
+                tap_code(KC_DOWN);
+                tap_code(KC_DOWN);
+                tap_code(KC_DOWN);
+                tap_code(KC_DOWN);
+            }
+            return false;
+
+        case fv_UP:
+            if (record->event.pressed) {
+                tap_code(KC_UP);
+                tap_code(KC_UP);
+                tap_code(KC_UP);
+                tap_code(KC_UP);
+                tap_code(KC_UP);
+            }
+            return false;
+
+        case fv_RIGHT:
+            if (record->event.pressed) {
+                tap_code(KC_RIGHT);
+                tap_code(KC_RIGHT);
+                tap_code(KC_RIGHT);
+                tap_code(KC_RIGHT);
+                tap_code(KC_RIGHT);
+            }
+            return false;
+
         case AE:
             if (shifted) {
                 // Clear shift temporarily to type the correct character
@@ -408,23 +450,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 /*
-* ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
-*
-*
-*                                                        ██████
-*                                                          ██  ▄▄▄▄
-*                                                          ██ ██▀▀██
-*                                                          ▀▀ ██▄▄██
-*                                                      ██████  ▀▀▀▀
-*                                                        ██ ▄▄▄▄▄▄
-*                                                        ██ ██▀▀▀▀
-*                                                        ██ ██████
-*                                                           ██▄▄▄▄
-*                                                           ▀▀▀▀▀▀
-*                                                         ████████
-*                                                         ██ ██ ██
-*                                                         ██ ██ ██
-*                                                         ▀▀ ▀▀ ▀▀
-*                                                        ████████
-*
-*/
+ * ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+ *
+ *
+ *                                                        ██████
+ *                                                          ██  ▄▄▄▄
+ *                                                          ██ ██▀▀██
+ *                                                          ▀▀ ██▄▄██
+ *                                                      ██████  ▀▀▀▀
+ *                                                        ██ ▄▄▄▄▄▄
+ *                                                        ██ ██▀▀▀▀
+ *                                                        ██ ██████
+ *                                                           ██▄▄▄▄
+ *                                                           ▀▀▀▀▀▀
+ *                                                         ████████
+ *                                                         ██ ██ ██
+ *                                                         ██ ██ ██
+ *                                                         ▀▀ ▀▀ ▀▀
+ *                                                        ████████
+ *
+ */
