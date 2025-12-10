@@ -99,7 +99,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 
 #define COMBO_MUST_HOLD_MODS
 
-const uint16_t PROGMEM left_ind_mid[] = {KC_X, KC_Z, COMBO_END};
+const uint16_t PROGMEM left_ind_mid[] = {KC_X, KC_Y, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_num[] = {KC_EQL, KC_COMM, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_base[] = {KC_G, KC_COMM, COMBO_END};
 const uint16_t PROGMEM left_top_row[] = {KC_Y, KC_U, KC_A, COMBO_END};
