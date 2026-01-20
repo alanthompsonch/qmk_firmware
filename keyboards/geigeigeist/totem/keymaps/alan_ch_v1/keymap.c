@@ -104,7 +104,8 @@ const uint16_t PROGMEM right_ind_mid_num[] = {KC_EQL, KC_COMM, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_base[] = {KC_G, KC_COMM, COMBO_END};
 const uint16_t PROGMEM left_top_row[] = {KC_Y, KC_U, KC_A, COMBO_END};
 const uint16_t PROGMEM both_thumbs_home[] = {LT(_NAV, KC_SPC), KC_LSFT, COMBO_END};
-const uint16_t PROGMEM outer_2_right[] = {KC_R, KC_H, COMBO_END};
+const uint16_t PROGMEM middle_2_home_right[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM middle_2_bottom_left[] = {KC_J, KC_X, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(left_ind_mid, KC_ESC),
@@ -112,7 +113,8 @@ combo_t key_combos[] = {
     COMBO(right_ind_mid_base, KC_ENT),
     COMBO(left_top_row, TG(_NUMBLK)),
     COMBO(both_thumbs_home, KC_LGUI),
-    COMBO(outer_2_right, KC_DEL)
+    COMBO(middle_2_home_right, KC_DEL),
+    COMBO(middle_2_bottom_left, KC_DEL)
 };
 
 // ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -158,13 +160,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * │         │    '    │         │         │         │    -    ││    +    │    =    │    ,    │    .    │    :    │  BCKSP  │
     * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
     *                               │         │         │         ││         │         │         │
+    *                               └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘
+    * ┌─────────────────────────────────────────────────┐
+    * │ m a t h n e w                                   │      ╭╮╭╮╭╮╭╮
+    * └─────────────────────────────────────────────────┘      │╰╯╰╯╰╯│
+    *           ┌─────────┬─────────┬─────────┬─────────┬──────╨──┐┌──╨──────┬─────────┬─────────┬─────────┬─────────┐
+    *   ╌┄┈┈───═╡         │    7    │    8    │    9    │         ││         │   F9    │   F10   │   F11   │   F12   │
+    *           ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
+    *           │    0    │    4    │    5    │    6    │         ││         │   F5    │   F6    │   F7    │   F8    │
+    * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
+    * │         │    .    │    1    │    2    │    3    │    -    ││    +    │   F1    │   F2    │   F3    │   F4    │  BCKSP  │
+    * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
+    *                               │         │         │         ││         │         │         │
     *                               └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
 
     [_MATH] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-                     KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,     KC_F6,    KC_F11,   KC_F12,   KC_F9,    KC_F10,
-                     KC_1,     KC_2,     KC_3,     KC_4,     KC_5,      KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
-          _______,   KC_MINS,  _______,  _______,  _______,  KC_SLSH,   KC_PLUS,  KC_EQL,   KC_COMM,  KC_DOT,   KC_COLN,   KC_BSPC,
+                     _______,  KC_7,     KC_8,     KC_9,     _______,   _______,  KC_F9,    KC_F10,   KC_F11,   KC_F12,
+                     KC_0,     KC_4,     KC_5,     KC_6,     _______,   _______,  KC_F5,    KC_F6,    KC_F7,    KC_F8,
+          _______,   KC_DOT,   KC_1,     KC_2,     KC_3,     KC_SLSH,   KC_PLUS,  KC_F1,    KC_F2,    KC_F3,    KC_F4,   KC_BSPC,
                                          _______,  _______,  _______,   _______,  _______,  _______
     ),
 
