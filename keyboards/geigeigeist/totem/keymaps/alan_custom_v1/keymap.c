@@ -33,7 +33,7 @@ enum totem_layers {
     _MOUSE,
     _FMED,
     _TEMP,
-    _NUMBLK,
+    _GAME,
     _UML
 };
 
@@ -102,7 +102,7 @@ combo_t key_combos[] = {
     COMBO(left_ind_mid, KC_ESC),
     COMBO(right_ind_mid_num, KC_ENT),
     COMBO(right_ind_mid_base, KC_ENT),
-    COMBO(left_top_row, TG(_NUMBLK)),
+    COMBO(left_top_row, TG(_GAME)),
     COMBO(both_thumbs_home, KC_LGUI),
     COMBO(outer_2_right, KC_DEL)
 };
@@ -261,24 +261,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
     *
     * ┌─────────────────────────────────────────────────┐
-    * │ n u m b l o c k                                 │      ╭╮╭╮╭╮╭╮
+    * │ g a m e l a y o u t                             │      ╭╮╭╮╭╮╭╮
     * └─────────────────────────────────────────────────┘      │╰╯╰╯╰╯│
     *           ┌─────────┬─────────┬─────────┬─────────┬──────╨──┐┌──╨──────┬─────────┬─────────┬─────────┬─────────┐
-    *   ╌┄┈┈───═╡         │    7    │    8    │    9    │         ││         │         │         │         │         │
+    *   ╌┄┈┈───═╡    G    │    Q    │    W    │    E    │    R    ││         │         │         │         │         │
     *           ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
-    *           │    0    │    4    │    5    │    6    │    /    ││         │  SHIFT  │   CTL   │   ALT   │   GUI   │
+    *           │  SHIFT  │    A    │    S    │    D    │    F    ││         │  SHIFT  │   CTL   │   ALT   │   GUI   │
     * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-    * │    ▼    │         │    1    │    2    │    3    │    -    ││    +    │    G    │    ,    │         │         │         │
+    * │    ▼    │  CTRL   │    Z    │    X    │    C    │    V    ││    +    │    G    │    ,    │         │         │         │
     * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
-    *                               │    0    │   SPC   │   TAB   ││         │         │         │
+    *                               │    T    │   SPC   │   TAB   ││         │         │         │
     *                               └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
 
-    [_NUMBLK] = LAYOUT(
+    [_GAME] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-                    XXXXXXX,  KC_7,     KC_8,     KC_9,     XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-                    KC_0,     KC_4,     KC_5,     KC_6,     KC_PSLS,   TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK),XXXXXXX,
-       TG(_NUMBLK), XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_MINS,   KC_PLUS,  KC_G,     KC_COMM,  XXXXXXX,  XXXXXXX,  _______,
-                                        KC_0,     KC_SPC,   KC_TAB,    TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK)
+                    KC_G,     KC_Q,     KC_W,     KC_E,     KC_R,      TG(_GAME),TG(_GAME),TG(_GAME),TG(_GAME),TG(_GAME),
+                    KC_LSFT,  KC_A,     KC_S,     KC_D,     KC_F,      TG(_GAME),TG(_GAME),TG(_GAME),TG(_GAME),TG(_GAME),
+         TG(_GAME), KC_LCTL,  KC_Z,     KC_X,     KC_C,     KC_V,      TG(_GAME),KC_G,     KC_COMM,  TG(_GAME),TG(_GAME),TG(_GAME),
+                                        KC_T,     KC_SPC,   KC_TAB,    TG(_GAME),TG(_GAME),TG(_GAME)
     ),
 
     /*
