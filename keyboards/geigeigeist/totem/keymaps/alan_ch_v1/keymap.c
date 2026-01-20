@@ -33,7 +33,7 @@ enum totem_layers {
     _MOUSE,
     _FMED,
     _TEMP,
-    _NUMBLK,
+    _GAME,
     _UML
 };
 
@@ -102,7 +102,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 const uint16_t PROGMEM left_ind_mid[] = {KC_X, KC_Y, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_num[] = {KC_EQL, KC_COMM, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_base[] = {KC_G, KC_COMM, COMBO_END};
-const uint16_t PROGMEM left_top_row[] = {KC_Y, KC_U, KC_A, COMBO_END};
+const uint16_t PROGMEM gaming[] = {KC_G, KC_A, KC_M, COMBO_END};
 const uint16_t PROGMEM both_thumbs_home[] = {LT(_NAV, KC_SPC), KC_LSFT, COMBO_END};
 const uint16_t PROGMEM middle_2_home_right[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM middle_2_bottom_left[] = {KC_J, KC_X, COMBO_END};
@@ -111,7 +111,7 @@ combo_t key_combos[] = {
     COMBO(left_ind_mid, KC_ESC),
     COMBO(right_ind_mid_num, KC_ENT),
     COMBO(right_ind_mid_base, KC_ENT),
-    COMBO(left_top_row, TG(_NUMBLK)),
+    COMBO(gaming, TG(_GAME)),
     COMBO(both_thumbs_home, KC_LGUI),
     COMBO(middle_2_home_right, KC_DEL),
     COMBO(middle_2_bottom_left, KC_DEL)
@@ -295,12 +295,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *                               │    0    │   SPC   │   TAB   ││         │         │         │
     *                               └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
 
-    [_NUMBLK] = LAYOUT(
+    [_GAME] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-                    XXXXXXX,  KC_7,     KC_8,     KC_9,     XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-                    KC_0,     KC_4,     KC_5,     KC_6,     KC_PSLS,   TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK),XXXXXXX,
-       TG(_NUMBLK), XXXXXXX,  KC_1,     KC_2,     KC_3,     KC_SLSH,   KC_PLUS,  KC_G,     KC_COMM,  XXXXXXX,  XXXXXXX,  _______,
-                                        KC_0,     KC_SPC,   KC_TAB,    TG(_NUMBLK),TG(_NUMBLK),TG(_NUMBLK)
+                    KC_G,     KC_Q,     KC_W,     KC_E,     KC_R,      TG(_GAME),TG(_GAME),TG(_GAME),TG(_GAME),TG(_GAME),
+                    KC_LSFT,  KC_A,     KC_S,     KC_D,     KC_F,      TG(_GAME),TG(_GAME),TG(_GAME),TG(_GAME),TG(_GAME),
+         TG(_GAME), KC_LCTL,  KC_Z,     KC_X,     KC_C,     KC_V,      TG(_GAME),KC_G,     KC_COMM,  TG(_GAME),TG(_GAME),TG(_GAME),
+                                        KC_T,     KC_SPC,   KC_TAB,    TG(_GAME),TG(_GAME),TG(_GAME)
+
     ),
 
     /*
