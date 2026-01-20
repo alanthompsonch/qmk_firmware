@@ -94,7 +94,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 const uint16_t PROGMEM left_ind_mid[] = {KC_X, KC_Z, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_num[] = {KC_EQL, KC_COMM, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_base[] = {KC_G, KC_COMM, COMBO_END};
-const uint16_t PROGMEM left_top_row[] = {KC_Y, KC_U, KC_A, COMBO_END};
+const uint16_t PROGMEM gaming[] = {KC_G, KC_A, KC_M, COMBO_END};
 const uint16_t PROGMEM both_thumbs_home[] = {LT(_NAV, KC_SPC), KC_LSFT, COMBO_END};
 const uint16_t PROGMEM outer_2_right[] = {KC_R, KC_H, COMBO_END};
 
@@ -102,7 +102,7 @@ combo_t key_combos[] = {
     COMBO(left_ind_mid, KC_ESC),
     COMBO(right_ind_mid_num, KC_ENT),
     COMBO(right_ind_mid_base, KC_ENT),
-    COMBO(left_top_row, TG(_GAME)),
+    COMBO(gaming, TG(_GAME)),
     COMBO(both_thumbs_home, KC_LGUI),
     COMBO(outer_2_right, KC_DEL)
 };
