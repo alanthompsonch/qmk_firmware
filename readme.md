@@ -3,6 +3,11 @@
 Alan's fork
 
 To do: 
+- move F-Keys to own one-shot layer triggered via left-hand combo. and add punctuation back to num layer (mainly '.' on right ring finger)
+- add media control
+
+
+
 I like the delete as combo on both hands.
 
 I think I prefer the numblock longterm (it's just not quite as comfortable, but will probably be faster once learned). I just couldn't get my head around the homerow numbers.
