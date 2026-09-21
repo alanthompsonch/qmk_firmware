@@ -198,7 +198,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * │ n e w s y m                                     │      ╭╮╭╮╭╮╭╮
     * └─────────────────────────────────────────────────┘      │╰╯╰╯╰╯│
     *           ┌─────────┬─────────┬─────────┬─────────┬──────╨──┐┌──╨──────┬─────────┬─────────┬─────────┬─────────┐
-    *   ╌┄┈┈───═╡    "    │    @    │    #    │    %    │    ^    ││    ~    │    |    │    &    │    =    │         │
+    *   ╌┄┈┈───═╡    "    │    @    │    #    │    %    │    ^    ││    ~    │    |    │    &    │    =    │    °    │
     *           ├─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┤
     *           │    '    │    {    │    [    │    (    │    /    ││    \    │    >    │    ?    │    !    │    $    │
     * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
@@ -210,7 +210,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_SYM] = LAYOUT(
         //╷         ╷           ╷           ╷           ╷           ╷           ╷╷           ╷           ╷           ╷           ╷           ╷           ╷
-                    S(KC_2),    ALGR(KC_2), ALGR(KC_3), S(KC_5),    KC_EQL,      ALGR(KC_EQL),ALGR(KC_7),S(KC_6),    S(KC_0),    XXXXXXX,
+                    S(KC_2),    ALGR(KC_2), ALGR(KC_3), S(KC_5),    KC_EQL,      ALGR(KC_EQL),ALGR(KC_7),S(KC_6),    S(KC_0),    S(KC_GRV),
                     KC_MINS, ALGR(KC_QUOT), ALGR(KC_LBRC),S(KC_8),  S(KC_7),  ALGR(KC_NUBS), S(KC_NUBS), S(KC_MINS), S(KC_RBRC), KC_NUHS,
            _______, S(KC_EQL),ALGR(KC_NUHS),ALGR(KC_RBRC),S(KC_9),  KC_SLSH,     S(KC_1),    KC_NUBS,    KC_COMM,    KC_DOT,     S(KC_3),   KC_BSPC,
                                          _______,  _______,  _______,   _______,  _______,  _______
