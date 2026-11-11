@@ -104,7 +104,6 @@ const uint16_t PROGMEM left_ind_mid[] = {KC_X, KC_Y, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_num[] = {KC_EQL, KC_COMM, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_base[] = {KC_G, KC_COMM, COMBO_END};
 const uint16_t PROGMEM gaming[] = {KC_G, KC_A, KC_M, COMBO_END};
-const uint16_t PROGMEM both_thumbs_home[] = {LT(_NAV, KC_SPC), SFT_ENT, COMBO_END};
 const uint16_t PROGMEM middle_2_home_right[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM middle_2_bottom_left[] = {KC_J, KC_X, COMBO_END};
 
@@ -113,7 +112,6 @@ combo_t key_combos[] = {
     COMBO(right_ind_mid_num, KC_ENT),
     COMBO(right_ind_mid_base, KC_ENT),
     COMBO(gaming, TG(_GAME)),
-    COMBO(both_thumbs_home, KC_LGUI),
     COMBO(middle_2_home_right, KC_DEL),
     COMBO(middle_2_bottom_left, KC_DEL)
 };
