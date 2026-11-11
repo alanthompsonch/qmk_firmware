@@ -24,6 +24,5 @@ for more options.
 // #define NO_ACTION_TAPPING
 // #define NO_MUSIC_MODE
 
-#define COMBO_COUNT 3
 
 #define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
