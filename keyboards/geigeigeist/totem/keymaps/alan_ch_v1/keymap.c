@@ -140,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NOTED] = LAYOUT(
         //╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷
-                    MO(_UML),  KC_Z,     KC_U,     KC_A,     KC_Q,      KC_P,     KC_B,     KC_M,     KC_L,     KC_F,
+                    OSL(_UML), KC_Z,     KC_U,     KC_A,     KC_Q,      KC_P,     KC_B,     KC_M,     KC_L,     KC_F,
                     KC_C,      ALT_S,    CTL_I,    SFT_E,    KC_O,      KC_D,     KC_T,     KC_N,     KC_R,     KC_H,
         GAC_MOD,    KC_V,      KC_J,     KC_X,     KC_Y,     KC_SLSH,   KC_W,     KC_G,     KC_COMM,  KC_DOT,   KC_K,  KC_BSPC,
                                          MOU_REP,  NAV_SPC,  MAT_TAB,   MO(_SYM), KC_LSFT,  KC_LGUI
