@@ -91,6 +91,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 #define NAV_SPC LT(_NAV, KC_SPC)
 #define MAT_TAB LT(_MATH, KC_TAB)
 #define CA_ESC MT(MOD_LCTL | MOD_LALT, KC_ESC)
+#define SFT_ENT MT(MOD_LSFT, KC_ENT)
 
 
 // ┌─────────────────────────────────────────────────┐
@@ -103,7 +104,7 @@ const uint16_t PROGMEM left_ind_mid[] = {KC_X, KC_Y, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_num[] = {KC_EQL, KC_COMM, COMBO_END};
 const uint16_t PROGMEM right_ind_mid_base[] = {KC_G, KC_COMM, COMBO_END};
 const uint16_t PROGMEM gaming[] = {KC_G, KC_A, KC_M, COMBO_END};
-const uint16_t PROGMEM both_thumbs_home[] = {LT(_NAV, KC_SPC), KC_LSFT, COMBO_END};
+const uint16_t PROGMEM both_thumbs_home[] = {LT(_NAV, KC_SPC), SFT_ENT, COMBO_END};
 const uint16_t PROGMEM middle_2_home_right[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM middle_2_bottom_left[] = {KC_J, KC_X, COMBO_END};
 
@@ -135,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
     * │  CA_ESC │    V    │    J    │    X    │    Z    │    -    ││    W    │    G    │    ,    │    .    │    K    │  BCKSP  │
     * └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┤├─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
-    *                               │ MOU_REP │ NAV_SPC │ MAT_TAB ││  _SYM   │  SHIFT  │   LGUI  │
+    *                               │ MOU_REP │ NAV_SPC │ MAT_TAB ││  _SYM   │ SFT_ENT │   LGUI  │
     *                               └─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┘*/
 
     [_NOTED] = LAYOUT(
@@ -143,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     OSL(_UML), KC_Z,     KC_U,     KC_A,     KC_Q,      KC_P,     KC_B,     KC_M,     KC_L,     KC_F,
                     KC_C,      ALT_S,    CTL_I,    SFT_E,    KC_O,      KC_D,     KC_T,     KC_N,     KC_R,     KC_H,
         CA_ESC,     KC_V,      KC_J,     KC_X,     KC_Y,     KC_SLSH,   KC_W,     KC_G,     KC_COMM,  KC_DOT,   KC_K,  KC_BSPC,
-                                         MOU_REP,  NAV_SPC,  MAT_TAB,   MO(_SYM), KC_LSFT,  KC_LGUI
+                                         MOU_REP,  NAV_SPC,  MAT_TAB,   MO(_SYM), SFT_ENT,  KC_LGUI
     ),
 
     /*
